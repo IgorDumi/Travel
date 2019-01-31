@@ -12,6 +12,9 @@ public class Car {
     int maxFuel;
     int consumption; // per 1km
 
+    int maxCapacity;
+    int currentCapacity;
+
     public Car() {
         this.model = "Demo";
         this.maxSpeed = 120;
@@ -21,6 +24,8 @@ public class Car {
         this.maxFuel = 50;
         this.consumption = 1;
         this.currentFuel = 50;
+        this.maxCapacity = 5;
+        this.currentCapacity = 1;
 
     }
 
@@ -30,7 +35,7 @@ public class Car {
 
     }
 
-    public Car(String model, int maxSpeed, double weight, String license, double mileage, int currentFuel, int maxFuel, int consumption) {
+    public Car(String model, int maxSpeed, double weight, String license, double mileage, int currentFuel, int maxFuel, int consumption, int maxCapacity, int currentCapacity) {
         this.model = model;
         this.maxSpeed = maxSpeed;
         this.weight = weight;
@@ -39,9 +44,13 @@ public class Car {
         this.currentFuel = currentFuel;
         this.maxFuel = maxFuel;
         this.consumption = consumption;
+        this.maxCapacity = maxCapacity;
+        this.currentCapacity = currentCapacity;
+
     }
 
     public void printAttributes() {
+        System.out.println();
         System.out.println("Model: " + this.model);
         System.out.println("Maksimalna brzina: " + this.maxSpeed);
         System.out.println("Tezina: " + this.weight);
@@ -50,6 +59,8 @@ public class Car {
         System.out.println("Registracija : " + this.license);
         System.out.println("Trenutno stanje rezervoara : " + this.currentFuel);
         System.out.println("Kilometraza: " + this.mileage);
+        System.out.println("Broj mesta: " + this.maxCapacity);
+        System.out.println("Trenutno zauzeto: " + this.currentCapacity);
         System.out.println();
     }
 
@@ -78,6 +89,20 @@ public class Car {
     public void fuelUp() {
         this.currentFuel = this.maxFuel;
         System.out.println("U automibil " + this.model + "je sipano " + (this.maxFuel - this.currentFuel) + " litara goriva");
+    }
+
+    public void getIn(int newPassangers) {
+
+        this.currentCapacity = this.currentCapacity + newPassangers;
+        System.out.println("Uslo je " + newPassangers + " putnika. Sada ih ima " + this.currentCapacity);
+
+    }
+
+    public void getOut(int outPassangers) {
+
+        this.currentCapacity = this.currentCapacity - outPassangers;
+        System.out.println("Izaslo je " + outPassangers + " putnika. Ostalo ih je " + this.currentCapacity);
+
     }
 
 }
